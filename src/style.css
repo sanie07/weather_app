@@ -26,8 +26,8 @@ header {
   border: none;
   color: rgba(39, 33, 66, 0.4);
   font-size: 16px;
-  padding: 15px;
-  width: 75%;
+  padding: 18px;
+  width: 80%;
   border-radius: 6px;
 }
 
@@ -37,7 +37,7 @@ header {
   background-color: #885df1;
   color: white;
   border: none;
-  padding: 15px;
+  padding: 18px;
   line-height: 1;
   border-radius: 5px;
 }
