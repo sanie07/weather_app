@@ -75,12 +75,12 @@ header {
 }
 
 .weather_app_icon {
-  font-size: 44px;
-  margin-top: 22px;
+  width: 88px;
+  height: 85px;
 }
 .weather_app_temperature {
   font-size: 68px;
-  margin-left: 10px;
+
   font-weight: bold;
 }
 .weather_app_unit {

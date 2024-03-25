@@ -1,4 +1,8 @@
 function UpadateWeatherData(response) {
+  if (response.data.status == "not_found") {
+    alert("Error: city not found");
+    return;
+  }
   let cityElement = document.querySelector("#city");
   let temperatureElement = document.querySelector("#temperature");
   let descriptionElement = document.querySelector("#description");
@@ -6,6 +10,7 @@ function UpadateWeatherData(response) {
   let windElement = document.querySelector("#wind-speed");
   let timeElement = document.querySelector("#time");
   let date = new Date(response.data.time * 1000);
+  let iconElement = document.querySelector("#icon");
 
   cityElement.innerHTML = response.data.city;
   temperatureElement.innerHTML = Math.round(response.data.temperature.current);
@@ -13,6 +18,7 @@ function UpadateWeatherData(response) {
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
   windElement.innerHTML = `${response.data.wind.speed} km/h`;
   timeElement.innerHTML = FormatDate(date);
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather_app_icon"/>`;
 }
 
 function FormatDate(date) {
