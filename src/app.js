@@ -1,8 +1,38 @@
 function UpadateWeatherData(response) {
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
   let cityElement = document.querySelector("#city");
+  let temperatureElement = document.querySelector("#temperature");
+  let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind-speed");
+  let timeElement = document.querySelector("#time");
+  let date = new Date(response.data.time * 1000);
+
   cityElement.innerHTML = response.data.city;
+  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  descriptionElement.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+  windElement.innerHTML = `${response.data.wind.speed} km/h`;
+  timeElement.innerHTML = FormatDate(date);
+}
+
+function FormatDate(date) {
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let minutos = 0;
+  if (date.getMinutes() < 10) {
+    minutos = `0${date.getMinutes()}`;
+  } else {
+    minutos = date.getMinutes();
+  }
+  let output = `${days[date.getDay()]} ${date.getHours()}:${minutos}`;
+  return output;
 }
 
 function searchCity(city) {
