@@ -22,6 +22,14 @@ function UpadateWeatherData(response) {
 
   getForecast(response.data.city);
 }
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  if (date.getDay() == 6) {
+    return days[0];
+  }
+  return days[date.getDay() + 1];
+}
 
 function FormatDate(date) {
   let days = [
@@ -59,24 +67,29 @@ function getForecast(city) {
 function displayForecast(response) {
   console.log(response.data);
 
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   let forecastHtml = "";
 
-  days.forEach(function (day) {
-    forecastHtml += `<div class="row">
-          <div class="col-2">
-            <div class="forecast_date">${day}</div>
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml += `<div class="row">
+          <div class="col">
+            <div class="forecast_date">${formatDay(day.time)}</div>
             <img
-              src="https://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
-              alt="icon_thu"
+              src="${day.condition.icon_url}"
+              alt="icon"
               width="60"
             />
             <div class="forecast_temperatures">
-              <span class="forecast_temperature_max"> 18 </span>
-              <span class="forecast_temperature_min"> 12 </span>
+              <span class="forecast_temperature_max"> <strong> ${Math.round(
+                day.temperature.maximum
+              )}°<strong/> </span>
+              <span class="forecast_temperature_min"> ${Math.round(
+                day.temperature.minimum
+              )}° </span>
             </div>
           </div>
         </div>`;
+    }
   });
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
