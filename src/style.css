@@ -101,7 +101,7 @@ header {
   color: rgba(39, 33, 66, 0.4);
 }
 .forecast_temperatures {
-  font-size: 13px;
+  font-size: 15px;
   display: flex;
   justify-content: space-evenly;
 }
