@@ -19,6 +19,8 @@ function UpadateWeatherData(response) {
   windElement.innerHTML = `${response.data.wind.speed} km/h`;
   timeElement.innerHTML = FormatDate(date);
   iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather_app_icon"/>`;
+
+  getForecast(response.data.city);
 }
 
 function FormatDate(date) {
@@ -47,8 +49,16 @@ function searchCity(city) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(UpadateWeatherData);
 }
+function getForecast(city) {
+  let apiKey = "ed03b85af3afdd1609b1odt4bf2f3bbf";
+  let unit = "metric";
+  apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=${unit}`;
+  axios(apiUrl).then(displayForecast);
+}
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data);
+
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   let forecastHtml = "";
 
@@ -82,4 +92,3 @@ let searchElement = document.querySelector("#search-form");
 searchElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("Asuncion");
-displayForecast();
