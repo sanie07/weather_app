@@ -48,6 +48,30 @@ function searchCity(city) {
   axios.get(apiUrl).then(UpadateWeatherData);
 }
 
+function displayForecast() {
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml += `<div class="row">
+          <div class="col-2">
+            <div class="forecast_date">${day}</div>
+            <img
+              src="https://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
+              alt="icon_thu"
+              width="60"
+            />
+            <div class="forecast_temperatures">
+              <span class="forecast_temperature_max"> 18 </span>
+              <span class="forecast_temperature_min"> 12 </span>
+            </div>
+          </div>
+        </div>`;
+  });
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHtml;
+}
+
 function handleSearchSubmit(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-form-input");
@@ -58,3 +82,4 @@ let searchElement = document.querySelector("#search-form");
 searchElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("Asuncion");
+displayForecast();
