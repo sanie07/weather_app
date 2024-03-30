@@ -4,7 +4,7 @@ body {
 
 .weather_app {
   background-color: white;
-  max-width: 500px;
+  max-width: 550px;
   margin: 50px auto;
   border: black;
   border-radius: 15px;
@@ -55,6 +55,7 @@ header {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 50px;
+  margin-bottom: 0;
 }
 
 .weather_app_details {
@@ -62,6 +63,7 @@ header {
   font-size: 17px;
   font-weight: 400;
   line-height: 24px;
+  margin-top: 0;
 }
 
 .weather_app_details strong {
@@ -109,7 +111,7 @@ header {
 footer {
   margin-top: 15px;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 15px 0 0 0;
+  padding: 30px 0 0 0;
   text-align: center;
   font-size: 13px;
   color: rgba(0, 0, 0, 0.6);
