@@ -88,6 +88,23 @@ header {
   font-size: 28px;
 }
 
+.weather_forecast {
+  margin-top: 20px;
+  text-align: center;
+  display: flex;
+}
+.forecast_date {
+  font-size: 16px;
+  color: rgba(39, 33, 66, 0.4);
+}
+.forecast_temperatures {
+  font-size: 13px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.forecast_temperature_min {
+  opacity: 0.6;
+}
 footer {
   margin-top: 15px;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
